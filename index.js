@@ -60,7 +60,7 @@ loadData();
 function detectDevic(){
     if(/Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent)){
         console.log("on mobile");
-        size = 30;
+        size = 40;
     }
 }
 detectDevic();
@@ -334,44 +334,99 @@ function playGame(){
     intit();
 }
 
-let lastX = 0,lastY = 0;
-let curX = 0, curY = 0;
-let th = 50;
-window.addEventListener("touchend" , (e)=>{
+let lastX = 0, lastY = 0;
+
+const THRESHOLD = 30; 
+
+
+
+window.addEventListener("touchend", () => {
+
     lastX = 0;
+
     lastY = 0;
+
 });
-window.addEventListener("touchmove" , (e)=>{
-    e.preventDefault()
-    eventOccur = true;
-    if(lastY == 0 && lastX == 0){
-        lastX = e.touches[0].screenX;
-        lastY = e.touches[0].screenY;
+
+
+
+window.addEventListener("touchmove", (e) => {
+
+    e.preventDefault(); 
+
+
+
+    let touch = e.touches[0]; 
+
+
+
+    if (lastX === 0 && lastY === 0) {
+
+        lastX = touch.screenX;
+
+        lastY = touch.screenY;
+
+        return; 
+
     }
-    curX = e.touches[0].screenX;
-    curY = e.touches[0].screenY;
-    let xDiff = lastX - curX;
-    let yDiff = lastY - curY;
-    if(Math.abs(xDiff) > Math.abs(yDiff)){
-        if(Math.abs(xDiff) >= th){
-            if(xDiff > 0){
-                snake.changeDirection(-1,0,"left");
-            }else{
-                snake.changeDirection(1,0,"right");
+
+
+
+    let xDiff = touch.screenX - lastX;
+
+    let yDiff = touch.screenY - lastY;
+
+
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+
+
+
+        if (Math.abs(xDiff) >= THRESHOLD && Math.abs(yDiff) < THRESHOLD) {
+
+            if (xDiff > 0) {
+
+                snake.changeDirection(1, 0, "right");
+
+            } else {
+
+                snake.changeDirection(-1, 0, "left");
+
             }
-            lastX = e.touches[0].screenX;
+
+            lastX = touch.screenX;
+
+            lastY = touch.screenY; 
+
         }
-    }else{
-        if(Math.abs(yDiff) >= th){
-            if(yDiff > 0){
-                snake.changeDirection(0,-1,"up");
-            }else{
-                snake.changeDirection(0,1,"down");
+
+    } else {
+
+
+
+        if (Math.abs(yDiff) >= THRESHOLD && Math.abs(xDiff) < THRESHOLD) {
+
+            if (yDiff > 0) {
+
+                snake.changeDirection(0, 1, "down");
+
+            } else {
+
+                snake.changeDirection(0, -1, "up");
+
             }
-            lastY = e.touches[0].screenY;
+
+            lastX = touch.screenX;
+
+            lastY = touch.screenY; 
+
         }
+
     }
+
 });
+
+
 window.addEventListener("resize" , setCanvasSize);
 window.addEventListener("keydown", function(e){
     // turn.play()
