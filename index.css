@@ -20,17 +20,17 @@ body{
     font-style: normal;
 }
 main{
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .game{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 100vh;
 }
 .canvas{
