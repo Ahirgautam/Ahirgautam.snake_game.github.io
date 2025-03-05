@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" max-age="86400" content="no-store, no-cache, must-revalidate">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link  href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    
+    <script  defer src="index.js"></script>
+</head>
+<body >
+    
+    <main>
+        <div class="game">
+            <div class="score_bar">
+                <div class="game__score">
+                    Score :
+                    <span class="current_score_display">0</span>
+                </div>
+                <div class="sound">
+                    <img class="sound_pause hide" src="assets/icons/sound-disable.svg" alt="play sound">
+                    <img class="sound_play"  src="assets/icons/sound.svg" alt="play sound">
+                </div>
+            </div>
+            <div class="canvas">
+                <canvas id="checkBoxPatternCanvas" ></canvas>
+                <canvas id="mainCanvas" ></canvas>
+            </div>
+        </div>
+
+        <div class="menu_container">
+            <div class="menu">
+                <div class="main_menu">
+                    <div class="logo">
+                        <img src="assets/images/game_logo3.png" alt="">
+                    </div>
+                    <div class="btns ">
+                        <button type="button" class="action_btn play">
+                            <img  src="assets/icons/play-1003-svgrepo-com.svg" alt="">
+                            play
+                        </button>
+                        <button type="button" class="action_btn setting_button" >
+                            <img src="assets/icons/setting-svgrepo-com.svg" alt="">
+                            setting
+                        </button>
+                    </div>
+                </div>
+                <form class="setting_menu">
+                    <div class="setting_container">
+                        <span class="setting_title">speed</span>
+                        <div class="custom_radio_container speed_selector">
+                            <label for="radio1" class="custom_radio">
+                                <input type="radio"  name="speed" value="5" title="turtle" id="radio1">
+                            </label>
+                            <label for="radio2" class="custom_radio">
+                                <input type="radio" checked name="speed" value="7" title="snake" id="radio2">
+                            </label>
+                            <label for="radio3" class="custom_radio">
+                                <input type="radio" name="speed" value="10" title="rabbit" id="radio3">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting_container">
+                        <span class="setting_title">bakground color</span>
+                        <div class="custom_radio_container">
+                            <label for="color1" class="custom_radio" style="--primary-color:hsl(120, 55%, 48%); --secondary-color:hsl(120, 83%, 68%)">
+                                <input type="radio" checked name="color" value='{"secondary" : "hsl(120, 83%, 68%)", "primary" : " hsl(120, 55%, 48%)"}' title="green" id="color1">
+                                <span class="color_demo"></span>
+                            </label>
+                            <label for="color2" class="custom_radio" style="--primary-color:hsl(57, 55%, 48%); --secondary-color: hsl(57, 83%, 68%)">
+                                <input type="radio"  name="color" value='{"secondary" : "hsl(57, 83%, 68%)", "primary" : "hsl(57, 55%, 48%)"}' title="golden-yellow" id="color2">
+                                <span class="color_demo"></span>
+                            </label>
+                            <label for="color3" class="custom_radio" style="--primary-color:hsl(353, 10%, 16%); --secondary-color: hsl(351, 11%, 64%)">
+                                <input type="radio" name="color" value='{"secondary" : "hsl(351, 11%, 64%)", "primary" : "hsl(353, 10%, 16%)"}' title="black-white" id="color3">
+                                <span class="color_demo"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting_container">
+                        <span class="setting_title">food count</span>
+                        <div class="custom_radio_container">
+                            <label for="food-count1" class="custom_radio" >
+                                <input type="radio" checked name="food_count" value="1" title="1x" id="food-count1">
+                                <span class="food_count">1X</span>
+                            </label>
+                            <label for="food-count2" class="custom_radio" >
+                                <input type="radio"  name="food_count" value="2" title="2x" id="food-count2">
+                                <span class="food_count">2X</span>
+                            </label>
+                            <label for="food-count3" class="custom_radio" >
+                                <input type="radio" name="food_count" value="3" title="3x" id="food-count3">
+                                <span class="food_count">3X</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting_btn">
+                        <button type="button" class="goto_menu">back</button>
+                        <button type="button" class="reset">reset</button>
+                    </div>
+                </form>
+                <div class="game_over_menu">
+                    <h1>Game Over</h1>
+                    <div class="game_over_menu--score_container">
+                        <span class="score">Your Score</span>
+                        <span class="game_over_score">0</span>
+                        <span class="score">High Score</span>
+                        <span class="high_score">0</span>
+                    </div>
+                    <div class="btns ">
+                        <button type="button"  class="action_btn play">
+                            <img src="assets/icons/undo-svgrepo-com.svg" alt="undo"/>
+                            <span>play again</span>
+                        </button>
+                        <button  type="button" class="action_btn menu_button" >
+                            <img src="assets/icons/arrow-left-svgrepo-com (1).svg" alt="left arrow">
+                            go to menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- <script  src="snake.js"></script> -->
+    
+</body>
+</html>
