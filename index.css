@@ -296,7 +296,12 @@ input[type="radio"]:focus-visible{
     row-gap: 1em;
     color: rgb(67, 70, 73);
 }
-
+.setting_btn button{
+    background-color: rgb(244, 240, 233);
+    border: 2px solid ;
+    color: black;
+    font-weight: 600;
+}
 @media only screen and (max-width : 400px){
     :root{
         font-size: 14px;
