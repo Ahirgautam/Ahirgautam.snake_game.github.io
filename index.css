@@ -185,7 +185,7 @@ div.logo{
 }
 .setting_container .custom_radio_container{
     width: 100%;
-    border: dashed;
+    border: 3px dashed;
     height: 60px;
     display: flex;
     overflow: hidden;   
@@ -202,7 +202,7 @@ div.logo{
     cursor: pointer;
 }
 .custom_radio:not(:last-child){
-    border-right: dashed;
+    border-right:3px dashed;
 }
 .custom_radio input{
     appearance: none;
